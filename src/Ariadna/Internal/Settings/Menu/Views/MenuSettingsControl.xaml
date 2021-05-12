@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Ariadna.MenuSettingsControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          
+             xmlns:local="clr-namespace:Ariadna"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Кнопки меню"
+                  Margin="2">
+            <TreeView ItemsSource="{Binding Items}"
+                      Background="Transparent"
+                      ContextMenu="{Binding ContextMenu}">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem"
+                           BasedOn="{StaticResource {x:Type TreeViewItem}}">
+
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+
+                        <Setter Property="local:IsActiveProperty.Value"
+                                Value="{Binding IsReadonlyItem, Mode=TwoWay}" />
+
+                        <Style.Triggers>
+
+                            <Trigger Property="local:IsActiveProperty.Value" Value="True">
+                                <Setter Property="Foreground" Value="OrangeRed" />
+                            </Trigger>
+
+                            <Trigger Property="local:IsActiveProperty.Value" Value="False">
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource MahApps.Brushes.Flyout.Foreground}" />
+                            </Trigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Width="20"
+                                            Height="20"
+                                            Visibility="{Binding IsVisibleIcon, Converter={local:BoolToVisibilityConverter }}"
+                                            Content="{Binding Icon}" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Margin="2 0 0 0"
+                                       Text="{Binding Header}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1"
+                  Margin="2"
+                  Header="Свойства кнопки">
+            <GroupBox.Resources>
+                <DataTemplate DataType="{x:Type local:MenuItemViewModel}">
+                    <local:CommandMenuInfo />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:SeparatorItemVm}">
+                    <local:SeparatorMenuInfo />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:RootItemVm}">
+                    <Grid />
+                </DataTemplate>
+            </GroupBox.Resources>
+            <ContentControl Content="{Binding SelectedItem}" />
+        </GroupBox>
+    </Grid>
+</UserControl>

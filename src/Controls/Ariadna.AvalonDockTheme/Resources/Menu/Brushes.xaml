@@ -1,0 +1,136 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:reskeys="clr-namespace:MagicWpf.AvalonDockTheme">
+
+    <!--Menu-->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=MenuSeparatorBorderBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.ThemeForeground}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=SubmenuItemBackgroundKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray8}" />
+
+    <!-- Highlighing Top Menu Entry on Mouse over -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=MenuItemHighlightedBackgroundKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Accent}" />
+
+    <!-- Highlighting all other than Top Menu entry on mouse over -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=SubmenuItemBackgroundHighlightedKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Accent}" />
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=FocusScrollButtonBrushKey}"
+        options:Freeze="True"
+        Color="#FF042271" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=ScrollButtonBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.ThemeForeground}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=CheckMarkBackgroundBrushKey}"
+        options:Freeze="True"
+        Color="Transparent" />
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=CheckMarkBorderBrushKey}"
+        options:Freeze="True"
+        Color="#90CDD3E6" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=CheckMarkForegroundBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.ThemeForeground}" />
+
+    <!-- SolidColorBrush x:Key="DisabledSubMenuItemForegroundBrush" Color="#FF9A9A9A" / -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=DisabledSubMenuItemBackgroundBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray8}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=DisabledSubMenuItemBorderBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray9}" />
+
+    <!-- SolidColorBrush x:Key="MenuBarBackgroundBorderBrush" Color="#F0000000"/ -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=MenuBorderBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray9}" />
+
+    <LinearGradientBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=MenuBackgroundKey}"
+        options:Freeze="True"
+        StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#1B1B1C" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Styles the background of the top level item in a menu (Files, Edit, ...) -->
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=TopLevelHeaderMenuBackgroundKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray8}" />
+    <!-- Control Keys XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=TextBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.ThemeForeground}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=ItemBackgroundSelectedKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Accent}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=ItemTextDisabledKey}"
+        options:Freeze="True"
+        Color="#FF9A9A9A" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=NormalBackgroundBrushKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Gray8}" />
+
+    <SolidColorBrush
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                             ResourceId=ItemBackgroundHoverKey}"
+        options:Freeze="True"
+        Color="{DynamicResource MahApps.Colors.Accent}" />
+
+    <!-- Define Shadow Effect for each menu item -->
+    <DropShadowEffect
+        x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type reskeys:ResourceKeys},
+                  ResourceId=DropShadowEffectKey}"
+        ShadowDepth="2"
+        Color="{DynamicResource MahApps.Colors.MenuShadow}" />
+
+</ResourceDictionary>

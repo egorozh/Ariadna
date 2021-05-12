@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Ariadna.MultiProjectView"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalondock="https://github.com/Dirkster99/AvalonDock"
+
+             xmlns:ariadna="clr-namespace:Ariadna"
+             xmlns:avalonDockTheme1="clr-namespace:MagicWpf.AvalonDockTheme;assembly=Ariadna.AvalonDockTheme"
+             mc:Ignorable="d">
+
+    <avalondock:DockingManager x:Name="DockManager"
+
+                               AnchorablesSource="{Binding MultiProjectApp.Tools}"
+                               DocumentsSource="{Binding MultiProjectApp.Projects}"
+                               ActiveContent="{Binding MultiProjectApp.CurrentProject, Mode=TwoWay, Converter={ariadna:ActiveDocumentConverter}}">
+     
+        <avalondock:DockingManager.Theme>
+            <avalonDockTheme1:MagicWpfTheme />
+        </avalondock:DockingManager.Theme>
+
+        <avalondock:DockingManager.LayoutItemTemplateSelector>
+            <ariadna:PanesTemplateSelector />
+        </avalondock:DockingManager.LayoutItemTemplateSelector>
+
+        <avalondock:DockingManager.LayoutItemContainerStyleSelector>
+            <ariadna:PanesStyleSelector>
+                <ariadna:PanesStyleSelector.ToolStyle>
+                    <Style TargetType="{x:Type avalondock:LayoutAnchorableItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}" />
+                        <Setter Property="IconSource" Value="{Binding Model.IconSource}" />
+
+                        <Setter Property="Visibility"
+                                Value="{Binding Model.IsVisible, Mode=TwoWay, Converter={ariadna:BtVConverter}, ConverterParameter={x:Static Visibility.Hidden}, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                        <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                        <Setter Property="IsActive" Value="{Binding Model.IsActive, Mode=TwoWay}" />
+                        <Setter Property="CanHide" Value="True" />
+                    </Style>
+                </ariadna:PanesStyleSelector.ToolStyle>
+                <ariadna:PanesStyleSelector.DocumentStyle>
+                    <Style TargetType="{x:Type avalondock:LayoutItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}" />
+                        <Setter Property="ToolTip" Value="{Binding Model.Title}" />
+                        <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
+                        <Setter Property="IconSource" Value="{Binding Model.IconSource}" />
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                    </Style>
+                </ariadna:PanesStyleSelector.DocumentStyle>
+            </ariadna:PanesStyleSelector>
+        </avalondock:DockingManager.LayoutItemContainerStyleSelector>
+
+        <avalondock:DockingManager.LayoutUpdateStrategy>
+            <ariadna:LayoutInitializer />
+        </avalondock:DockingManager.LayoutUpdateStrategy>
+
+        <avalondock:LayoutRoot>
+            <avalondock:LayoutPanel Orientation="Vertical">
+                <avalondock:LayoutDocumentPane />
+                <avalondock:LayoutAnchorablePane Name="ToolsPane" DockHeight="150" />
+            </avalondock:LayoutPanel>
+        </avalondock:LayoutRoot>
+
+    </avalondock:DockingManager>
+
+</UserControl>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Core\AKIM.Math\AKIM.Math.csproj" />
+    <ProjectReference Include="..\..\..\..\..\Core\AKIM.Undo\AKIM.Undo.csproj" />
+    <ProjectReference Include="..\..\..\Ariadna.Core\Ariadna.Core.csproj" />
+  </ItemGroup>
+
+</Project>

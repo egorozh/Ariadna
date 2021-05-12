@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.5" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Ariadna.Engine.Core\Ariadna.Engine.Core.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.GeometryCreator\Ariadna.Engine.GeometryCreator.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.PointCreator\Ariadna.Engine.PointCreator.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.Reflection\Ariadna.Engine.Reflection.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.Rotation\Ariadna.Engine.Rotation.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.RulerCreator\Ariadna.Engine.RulerCreator.csproj" />
+    <ProjectReference Include="..\Modules\Ariadna.Engine.Transformation\Ariadna.Engine.Transformation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Themes\Grayscale.ps" />
+    <Resource Include="Themes\Orangescale.ps" />
+  </ItemGroup>
+
+</Project>
