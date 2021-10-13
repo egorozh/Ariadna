@@ -1,0 +1,12 @@
+<Project>
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>Enable</Nullable>
+
+		<Version>0.1.0.0</Version>
+
+		<Copyright>Egorozh</Copyright>
+		<Company>Egorozh</Company>
+		<Authors>Egor Zheludkov</Authors>
+	</PropertyGroup>
+</Project>
