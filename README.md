@@ -1,2 +1,2 @@
 # Ariadna
-WPF UI фреймворк для создания приложений с вкладками, лентой и панелями инструментов
+WPF UI framework for building tabbed, ribbon and toolbar apps
