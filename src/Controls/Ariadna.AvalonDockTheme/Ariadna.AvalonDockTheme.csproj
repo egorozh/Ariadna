@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Dirkster.AvalonDock" Version="4.60.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Images\*.png" />
+	</ItemGroup>
+
+</Project>
