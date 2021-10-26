@@ -1,0 +1,128 @@
+﻿<mah:MetroWindow x:Class="Ariadna.MainWindow"
+                 x:ClassModifier="internal"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:fluent="urn:fluent-ribbon"
+        
+                 xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+
+                 xmlns:local="clr-namespace:Ariadna"
+                 xmlns:quickActionsBar="clr-namespace:Ariadna.QuickActionsBar;assembly=Ariadna.QuickActionsBar"
+                 mc:Ignorable="d"
+
+                 Height="900" Width="1500"
+                 WindowStartupLocation="CenterScreen"
+                 WindowState="Maximized"
+
+                 Style="{DynamicResource {x:Static local:AriadnaResourceKeys.Window}}"
+
+                 local:InputBindnigsProperty.Value="{Binding UiManager.KeyBindings}"
+
+                 mah:DialogParticipation.Register="{Binding}"
+
+                 Title="{Binding AriadnaApp.Title}"
+
+                 ShowTitleBar="True">
+
+    <mah:MetroWindow.TitleTemplate>
+        <DataTemplate>
+            <fluent:RibbonTitleBar x:Name="RibbonTitleBar"
+                                   VerticalContentAlignment="Center"
+                                   HeaderAlignment="Center"
+
+                                   Header="{Binding Path=Title, RelativeSource={RelativeSource AncestorType=Window}}" />
+        </DataTemplate>
+    </mah:MetroWindow.TitleTemplate>
+
+    <!--Menu-->
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Menu ItemsSource="{Binding UiManager.MenuManager.MenuItems}"
+                  Background="{DynamicResource MahApps.Brushes.Gray8}"
+                  FontSize="11" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <!--Theme manage-->
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Left">
+                <ContentControl Content="{Binding AriadnaApp.SettingsButton}" />
+                <Button Content="{DynamicResource CollageIcon}">
+                    <b:Interaction.Behaviors>
+                        <local:DropDownButtonBehavior />
+                    </b:Interaction.Behaviors>
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Тема" ItemsSource="{Binding ThemeManager.ThemesMenuItems}" />
+                            <MenuItem Header="Цветовая схема"
+                                      ItemsSource="{Binding ThemeManager.AccentsMenuItems}" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </StackPanel>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <!--Ribbon -->
+            <RowDefinition Height="Auto" />
+
+            <!--Quick Actions with Work Space-->
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+        <!--Ribbon-->
+        <fluent:Ribbon CanMinimize="False"
+                       IsMinimized="False"
+                       CanQuickAccessLocationChanging="False"
+                       CanCustomizeQuickAccessToolBar="False"
+                       CanCustomizeQuickAccessToolBarItems="False"
+                       IsQuickAccessToolBarVisible="False"
+                       Visibility="{Binding UiManager.RibbonManager.Visible, Converter={local:BoolToVisibilityConverter}}"
+                       SelectedTabIndex="{Binding UiManager.RibbonManager.SelectedTabIndex, Mode=TwoWay}">
+            <b:Interaction.Behaviors>
+                <local:RibbonBehavior RibbonManager="{Binding UiManager.RibbonManager}" />
+            </b:Interaction.Behaviors>
+        </fluent:Ribbon>
+
+        <!--Quick Actions-->
+        <quickActionsBar:ToolBarLayout Grid.Row="1"
+                                       TopToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.TopToolBar}"
+                                       LeftToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.LeftToolBar}"
+                                       RightToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.RightToolBar}"
+                                       IsShowLeft="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowLeft}"
+                                       IsShowTop="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowTop}"
+                                       IsShowRight="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowRight}">
+
+            <quickActionsBar:ToolBarLayout.QuickActionsContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Показать левую панель"
+                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowLeft, Mode=TwoWay}"
+                              IsCheckable="True" />
+                    <MenuItem Header="Показать верхнюю панель"
+                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowTop, Mode=TwoWay}"
+                              IsCheckable="True" />
+                    <MenuItem Header="Показать правую панель"
+                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowRight, Mode=TwoWay}"
+                              IsCheckable="True" />
+                </ContextMenu>
+            </quickActionsBar:ToolBarLayout.QuickActionsContextMenu>
+
+            <!--Work Space-->
+            <ContentControl Content="{Binding AriadnaApp.AppView}"
+                            ContextMenu="{x:Null}" />
+
+        </quickActionsBar:ToolBarLayout>
+
+    </Grid>
+
+</mah:MetroWindow>

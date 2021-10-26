@@ -1,17 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<TargetFrameworks>net6.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Ariadna</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+
+		<PackageReference Include="Autofac" Version="6.3.0" />
+		<PackageReference Include="Egorozh.ColorPicker.WPF.Dialog.MahApps" Version="2.4.3.2" />
+
+		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
+
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0-rc.2.21480.5" />
+
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Prism.Core" Version="8.1.97" />
+		<PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Sinks.Observable" Version="2.0.2" />
+		<PackageReference Include="SharpVectors.Reloaded" Version="1.7.6" />
+		<PackageReference Include="SingleInstanceHelper" Version="1.0.3" />
+		<PackageReference Include="System.ComponentModel.Composition" Version="6.0.0-rc.2.21480.5" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Ariadna.Core\Ariadna.Core.csproj" />
+		<ProjectReference Include="..\Ariadna.Core\Ariadna.Core.csproj" />
+		<ProjectReference Include="..\Controls\Ariadna.AvalonDockTheme\Ariadna.AvalonDockTheme.csproj" />
+		<ProjectReference Include="..\Controls\Ariadna.QuickActionsBar\Ariadna.QuickActionsBar.csproj" />
 	</ItemGroup>
 
 </Project>

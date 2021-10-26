@@ -63,11 +63,11 @@ public abstract class CommandFeature : InterfaceFeature, ICommandFeature
         }
 #endif
     }
+        
+    public virtual FrameworkElement? GetDefaultIcon() => null;
 
-    public FrameworkElement? GetDefaultIcon() => null;
-
-    public KeyBinding? GetDefaultKeyBinding() => null;
-
+    public virtual KeyBinding? GetDefaultKeyBinding() => null;
+        
     public void Update()
     {
         CanExecuteChanged?.Invoke(this, EventArgs.Empty);

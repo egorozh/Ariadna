@@ -4,9 +4,27 @@ namespace Ariadna;
 
 public class AriadnaApp : BaseViewModel
 {
-    public void CatchUnhandledException(Exception exception)
+    #region Public Methods
+
+    public bool Close()
+    {
+        return false;
+    }
+
+    public void ClosedApp()
+    {
+    }
+
+    #endregion
+
+
+    #region Internal Methods
+
+    internal void CatchUnhandledException(Exception exception)
     {
         //    Logger.Error(e.Message);
         //    await AriadnaApp.ShowMessageBoxAsync("Ошибка", "Что-то пошло не так. Обратитесь к разработчикам!");
     }
+
+    #endregion
 }
