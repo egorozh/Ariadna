@@ -9,4 +9,8 @@ public interface IStorage
     string AvalonConfigPath { get;  }
 
     string AppSettingsPath { get;  }
+
+    string IconsDirectory { get;}
+
+    string InterfaceConfigPath { get; }
 }

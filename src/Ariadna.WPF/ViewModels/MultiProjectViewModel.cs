@@ -5,22 +5,20 @@ using System.IO;
 
 namespace Ariadna;
 
-internal class MultiProjectViewModel<TDoc, TTool> : BaseViewModel
-    where TDoc : class, IDocumentViewModel
-    where TTool : IToolViewModel
+internal class MultiProjectViewModel : BaseViewModel
 {
     private readonly IStorage _storage;
 
     #region Public Properties
 
-    public IMultiProjectApp<TDoc, TTool> MultiProjectApp { get; }
+    public IMultiProjectApp MultiProjectApp { get; }
     public DockingManager? DockingManager { get; private set; }
 
     #endregion
 
     #region Constructor
 
-    public MultiProjectViewModel(IMultiProjectApp<TDoc, TTool> multiProjectApp,
+    public MultiProjectViewModel(IMultiProjectApp multiProjectApp,
         IStorage storage)
     {
         _storage = storage;

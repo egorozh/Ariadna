@@ -18,14 +18,17 @@
                  WindowState="Maximized"
 
                  Style="{DynamicResource {x:Static local:AriadnaResourceKeys.Window}}"
-
-                 local:InputBindnigsProperty.Value="{Binding UiManager.KeyBindings}"
+                
 
                  mah:DialogParticipation.Register="{Binding}"
 
                  Title="{Binding AriadnaApp.Title}"
 
                  ShowTitleBar="True">
+
+    <b:Interaction.Behaviors>
+        <local:InputBindingsBehavior KeyBindings="{Binding UiManager.KeyBindings}"/>
+    </b:Interaction.Behaviors>
 
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>

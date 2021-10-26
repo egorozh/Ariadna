@@ -6,7 +6,7 @@ using System.Windows.Data;
 namespace Ariadna;
 
 public abstract class ComboboxFeature<T> : InterfaceFeature, IComboboxFeature<T>
-    where T : IComboBoxItem
+    where T : class, IComboBoxItem
 {
     #region Private Fields
 
@@ -18,6 +18,14 @@ public abstract class ComboboxFeature<T> : InterfaceFeature, IComboboxFeature<T>
     #region Public Properties
 
     public ObservableCollection<T> Items { get; } = new();
+
+    object? IComboboxFeature.CurrentItem
+    {
+        get => CurrentItem;
+        set => CurrentItem = value as T;
+    }
+
+    System.Collections.IEnumerable IComboboxFeature.Items => Items;
 
     public bool IsEnabled
     {

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Ariadna.Settings.CommandMenuInfo"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           
+             xmlns:ariadna="clr-namespace:Ariadna"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="Название: "
+                   VerticalAlignment="Center" />
+
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 Margin="0 3"
+                 Text="{Binding Header, UpdateSourceTrigger=PropertyChanged}" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Visibility="{Binding IsVisibleIcon, Converter={ariadna:BoolToVisibilityConverter}}"
+                   Text="Команда: " />
+
+        <TextBlock Grid.Row="1" Grid.Column="1"
+                   Margin="0 3"
+                   TextWrapping="Wrap"
+                   Text="{Binding FeatureName, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+              Height="70"
+              Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}">
+            <ContentControl Margin="4"
+                            Content="{Binding IconLarge}" />
+        </Grid>
+    </Grid>
+
+</UserControl>

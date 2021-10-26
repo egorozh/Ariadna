@@ -26,9 +26,7 @@ internal class MainWindowViewModel : BaseViewModel
     #endregion
 
     #region Public Methods
-
-    //public async Task LoadAsync() => await AriadnaApp.LoadAsync();
-
+    
     public bool Close() => AriadnaApp.Close();
 
     public void Closed() => AriadnaApp.ClosedApp();

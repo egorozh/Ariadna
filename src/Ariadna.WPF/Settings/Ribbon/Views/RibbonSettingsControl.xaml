@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Ariadna.Settings.RibbonSettingsControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ribbon="clr-namespace:Ariadna.Settings"
+
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="600">
+    <Grid>
+
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type ribbon:ButtonViewModel}">
+                <ribbon:RibbonButtonInfo />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ribbon:ComboBoxViewModel}">
+                <ribbon:RibbonComboBoxInfo />
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Вкладки"
+                  Margin="2">
+            <ListBox ItemsSource="{Binding Tabs}"
+                     SelectedItem="{Binding SelectedTab}"
+                     ContextMenu="{Binding TabsContextMenu}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Header}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Группы"
+                  Margin="2">
+            <ListBox ItemsSource="{Binding SelectedTab.Groups}"
+                     SelectedItem="{Binding SelectedTab.SelectedGroup}"
+                     ContextMenu="{Binding SelectedTab.GroupsContextMenu}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Header}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="2" Header="Элементы"
+                  Margin="2">
+            <ListBox ItemsSource="{Binding SelectedTab.SelectedGroup.Items}"
+                     SelectedItem="{Binding SelectedTab.SelectedGroup.SelectedItem}"
+                     ContextMenu="{Binding  SelectedTab.SelectedGroup.ButtonsContextMenu}">
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Width="20"
+                                            Height="20"
+                                            Content="{Binding Icon}" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Margin="2 0 0 0"
+                                       Text="{Binding Header}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+
+        <ContentControl Grid.Row="1" Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Content="{Binding SelectedTab.SelectedGroup.SelectedItem}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Ariadna.Settings.HotKeysSettingsControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mah:DialogParticipation.Register="{Binding}">
+    <Grid>
+        <GroupBox Header="Горячие клавиши"
+                  Grid.RowSpan="2"
+                  Margin="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ComboBox ItemsSource="{Binding FilterTitles}"
+                          Margin="0 0 0 10"
+                          SelectedItem="{Binding SelectedFilterTitle}" />
+
+                <ListBox Grid.Row="1"
+                         ItemsSource="{Binding Items}"
+                         SelectionMode="Single"
+                         mah:ItemHelper.SelectedBackgroundBrush="Transparent"
+                         mah:ItemHelper.ActiveSelectionBackgroundBrush="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="190" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center"
+                                           Text="{Binding Header}" />
+
+                                <mah:HotKeyBox Grid.Column="2"
+                                               Margin="3"
+                                               HorizontalAlignment="Stretch"
+                                               HotKey="{Binding Keys, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
+                                               mah:TextBoxHelper.ClearTextButton="True"
+                                               mah:TextBoxHelper.Watermark="Зажмите клавиши" >
+                                    
+                                </mah:HotKeyBox>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

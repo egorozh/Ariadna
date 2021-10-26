@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                    
+                    xmlns:themes="clr-namespace:Ariadna"
+                    xmlns:ariadna="clr-namespace:Ariadna">
+
+    <Style x:Key="{x:Static themes:AriadnaResourceKeys.Window}" TargetType="{x:Type mah:MetroWindow}">
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Gray1}" />
+        <Setter Property="OverrideDefaultWindowCommandsBrush" Value="{DynamicResource MahApps.Brushes.Gray1}" />
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8 }" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="OverlayBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="BorderThickness" Value="0 0 1 1" />
+        <Setter Property="IconTemplate" Value="{DynamicResource MainApplicationLogo}"/>
+    </Style>
+
+    <Style TargetType="{x:Type ariadna:DialogWindow}" 
+           BasedOn="{StaticResource {x:Type mah:MetroWindow}}">
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Gray1}" />
+        <Setter Property="OverrideDefaultWindowCommandsBrush" Value="{DynamicResource MahApps.Brushes.Gray1}" />
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Gray8 }" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="OverlayBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
+        <Setter Property="BorderThickness" Value="0 0 1 1" />
+
+        <Setter Property="mah:DialogParticipation.Register" Value="{Binding}" />
+
+        <Setter Property="IconTemplate" Value="{DynamicResource MainApplicationLogo}"/>
+       
+    </Style>
+
+    <Style x:Key="AvalonDockThemeVs2013ToolButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
+                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />-->
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <!--<Setter Property="BorderBrush" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor31}" />
+                <Setter Property="Background" Value="{DynamicResource AvalonDock_ThemeMetro_BaseColor10}" />-->
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="AvalonDockThemeVs2013ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

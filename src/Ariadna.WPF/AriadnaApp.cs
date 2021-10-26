@@ -1,9 +1,22 @@
-﻿using Ariadna.Core;
+﻿using System.Windows.Controls;
+using Ariadna.Core;
 
 namespace Ariadna;
 
 public class AriadnaApp : BaseViewModel
 {
+    public Button SettingsButton { get; internal set; }
+
+    #region Events
+
+    public event EventHandler<IReadOnlyCollection<string>>? NextInstanceRunned;
+
+    public event EventHandler? Started;
+
+    public event EventHandler? Closed;
+
+    #endregion
+
     #region Public Methods
 
     public bool Close()
