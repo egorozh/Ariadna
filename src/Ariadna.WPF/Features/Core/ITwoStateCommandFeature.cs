@@ -7,8 +7,8 @@ public interface ITwoStateCommandFeature : ICommandFeature
     State State { get; }
     
     event EventHandler StateChanged;
-
-    FrameworkElement CreateAlternativeIcon();
+        
+    FrameworkElement? CreateAlternativeIcon();
     DefaultMenuProperties GetAlternativeMenuProperties();
     DefaultRibbonProperties GetAlternativeRibbonProperties();
 }
