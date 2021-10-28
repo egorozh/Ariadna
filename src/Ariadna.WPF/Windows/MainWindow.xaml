@@ -1,33 +1,22 @@
 ﻿<mah:MetroWindow x:Class="Ariadna.MainWindow"
                  x:ClassModifier="internal"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                 xmlns:fluent="urn:fluent-ribbon"
-        
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:local="clr-namespace:Ariadna"
                  xmlns:quickActionsBar="clr-namespace:Ariadna.QuickActionsBar;assembly=Ariadna.QuickActionsBar"
+                 xmlns:fluent="urn:fluent-ribbon"
                  mc:Ignorable="d"
 
-                 Height="900" Width="1500"
-                 WindowStartupLocation="CenterScreen"
-                 WindowState="Maximized"
-
                  Style="{DynamicResource {x:Static local:AriadnaResourceKeys.Window}}"
-                
-
-                 mah:DialogParticipation.Register="{Binding}"
-
-                 Title="{Binding AriadnaApp.Title}"
-
-                 ShowTitleBar="True">
+                 WindowStartupLocation="CenterScreen"
+                 Title="{Binding AriadnaApp.Title}">
 
     <b:Interaction.Behaviors>
-        <local:InputBindingsBehavior KeyBindings="{Binding UiManager.KeyBindings}"/>
+        <local:InputBindingsBehavior KeyBindings="{Binding UiManager.KeyBindings}" />
     </b:Interaction.Behaviors>
 
     <mah:MetroWindow.TitleTemplate>
@@ -55,7 +44,7 @@
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Left">
-                <ContentControl Content="{Binding AriadnaApp.SettingsButton}" />
+                <ContentControl Content="{Binding UiManager.SettingsButton}" />
                 <Button Content="{DynamicResource CollageIcon}">
                     <b:Interaction.Behaviors>
                         <local:DropDownButtonBehavior />
@@ -99,23 +88,23 @@
 
         <!--Quick Actions-->
         <quickActionsBar:ToolBarLayout Grid.Row="1"
-                                       TopToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.TopToolBar}"
-                                       LeftToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.LeftToolBar}"
-                                       RightToolBar="{Binding  AriadnaApp.UiManager.QuickActionsManager.RightToolBar}"
-                                       IsShowLeft="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowLeft}"
-                                       IsShowTop="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowTop}"
-                                       IsShowRight="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowRight}">
+                                       TopToolBar="{Binding  UiManager.QuickActionsManager.TopToolBar}"
+                                       LeftToolBar="{Binding  UiManager.QuickActionsManager.LeftToolBar}"
+                                       RightToolBar="{Binding  UiManager.QuickActionsManager.RightToolBar}"
+                                       IsShowLeft="{Binding  UiManager.QuickActionsManager.IsShowLeft}"
+                                       IsShowTop="{Binding  UiManager.QuickActionsManager.IsShowTop}"
+                                       IsShowRight="{Binding  UiManager.QuickActionsManager.IsShowRight}">
 
             <quickActionsBar:ToolBarLayout.QuickActionsContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Показать левую панель"
-                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowLeft, Mode=TwoWay}"
+                              IsChecked="{Binding  UiManager.QuickActionsManager.IsShowLeft, Mode=TwoWay}"
                               IsCheckable="True" />
                     <MenuItem Header="Показать верхнюю панель"
-                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowTop, Mode=TwoWay}"
+                              IsChecked="{Binding  UiManager.QuickActionsManager.IsShowTop, Mode=TwoWay}"
                               IsCheckable="True" />
                     <MenuItem Header="Показать правую панель"
-                              IsChecked="{Binding  AriadnaApp.UiManager.QuickActionsManager.IsShowRight, Mode=TwoWay}"
+                              IsChecked="{Binding  UiManager.QuickActionsManager.IsShowRight, Mode=TwoWay}"
                               IsCheckable="True" />
                 </ContextMenu>
             </quickActionsBar:ToolBarLayout.QuickActionsContextMenu>

@@ -40,7 +40,7 @@ public abstract class CommandFeature : InterfaceFeature, ICommandFeature
         }
         catch (Exception e)
         {
-            AriadnaApp.CatchUnhandledException(e);
+            AriadnaApp.CatchUnhandledException(e).RunSynchronously();
 
             return false;
         }
@@ -59,7 +59,7 @@ public abstract class CommandFeature : InterfaceFeature, ICommandFeature
         }
         catch (Exception e)
         {
-            AriadnaApp.CatchUnhandledException(e);
+            AriadnaApp.CatchUnhandledException(e).RunSynchronously();
         }
 #endif
     }

@@ -1,12 +1,12 @@
-﻿<local:DialogWindow x:Class="Ariadna.SettingsDialog"
+﻿<ariadna:DialogWindow x:Class="Ariadna.SettingsDialog"
                     x:ClassModifier="internal"
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:ariadna="clr-namespace:Ariadna"
 
-                    xmlns:local="clr-namespace:Ariadna"
                     mc:Ignorable="d"
 
                     Title="Параметры AKIM"
@@ -43,7 +43,7 @@
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                 <TextBlock Text="{Binding Name}"
-                                           FontFamily="Segoe UI Light" />
+                                            />
                             </HierarchicalDataTemplate>
                         </TreeView.ItemTemplate>
                     </TreeView>
@@ -80,4 +80,4 @@
 
     </Grid>
 
-</local:DialogWindow>
+</ariadna:DialogWindow>

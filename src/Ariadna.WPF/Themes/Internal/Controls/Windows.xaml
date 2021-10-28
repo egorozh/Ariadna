@@ -2,10 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                     
-                    xmlns:themes="clr-namespace:Ariadna"
                     xmlns:ariadna="clr-namespace:Ariadna">
 
-    <Style x:Key="{x:Static themes:AriadnaResourceKeys.Window}" TargetType="{x:Type mah:MetroWindow}">
+    <Style x:Key="{x:Static ariadna:AriadnaResourceKeys.Window}" TargetType="{x:Type mah:MetroWindow}">
         <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
         <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
         <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Gray1}" />
@@ -17,10 +16,18 @@
         <Setter Property="NonActiveGlowBrush" Value="{DynamicResource MahApps.Brushes.Accent}" />
         <Setter Property="BorderThickness" Value="0 0 1 1" />
         <Setter Property="IconTemplate" Value="{DynamicResource MainApplicationLogo}"/>
+
+        <Setter Property="mah:DialogParticipation.Register" Value="{Binding}" />
+        <Setter Property="Height" Value="900" />
+        <Setter Property="Width" Value="1500" />
+       
+        <Setter Property="WindowState" Value="Maximized" />
+        <Setter Property="ShowTitleBar" Value="True" />
+        
     </Style>
 
-    <Style TargetType="{x:Type ariadna:DialogWindow}" 
-           BasedOn="{StaticResource {x:Type mah:MetroWindow}}">
+    <Style  x:Key="{x:Static ariadna:AriadnaResourceKeys.DialogWindow}" 
+            TargetType="{x:Type ariadna:DialogWindow}" >
         <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
         <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.Gray8}" />
         <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Gray1}" />

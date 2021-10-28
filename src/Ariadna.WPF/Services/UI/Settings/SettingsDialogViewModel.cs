@@ -8,7 +8,7 @@ internal class SettingsDialogViewModel : BaseViewModel
 {
     #region Private Fields
 
-    private readonly IUiManager _uiManager;
+    private readonly SettingsManager _settingsManager;
 
     #endregion
 
@@ -17,8 +17,7 @@ internal class SettingsDialogViewModel : BaseViewModel
     /// <summary>
     /// Элементы настроек
     /// </summary>
-    public ObservableCollection<SettingsItemContainerViewModel> Items { get; set; } =
-        new ObservableCollection<SettingsItemContainerViewModel>();
+    public ObservableCollection<SettingsItemContainerViewModel> Items { get; set; } = new();
 
     /// <summary>
     /// Выделенный элемент
@@ -37,10 +36,9 @@ internal class SettingsDialogViewModel : BaseViewModel
 
     #region Constructor
 
-    public SettingsDialogViewModel(IUiManager uiManager)
+    public SettingsDialogViewModel(SettingsManager settingsManager)
     {
-        _uiManager = uiManager;
-
+        _settingsManager = settingsManager;
         OkCommand = new DelegateCommand(Ok);
         CancelCommand = new DelegateCommand(Cancel);
         AcceptCommand = new DelegateCommand(Accept, CanAccept);
@@ -113,7 +111,7 @@ internal class SettingsDialogViewModel : BaseViewModel
             }
         });
 
-        _uiManager.SettingsManager.Close();
+        _settingsManager.Close();
     }
 
     private void Ok()
@@ -121,7 +119,7 @@ internal class SettingsDialogViewModel : BaseViewModel
         if (CanAccept())
             Accept();
 
-        _uiManager.SettingsManager.Close();
+        _settingsManager.Close();
     }
 
     #endregion

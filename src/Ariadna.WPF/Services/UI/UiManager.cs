@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Ariadna.Core;
+using Serilog;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Ariadna.Core;
-using Serilog;
 
 namespace Ariadna;
 
@@ -17,15 +14,17 @@ public class UiManager : BaseViewModel, IUiManager
     #region Private Fields
 
     private readonly AriadnaApp _ariadnaApp;
-    private readonly IReadOnlyList<IFeature> _features;
+    private IReadOnlyList<IFeature> _features;
     private readonly IInterfaceHelper _interfaceHelper;
-    private readonly IReadOnlyList<ISettings> _settings;
+    private IReadOnlyList<ISettings> _settings;
     private readonly ILogger _logger;
     private readonly IStorage _storage;
 
     #endregion
 
     #region Public Properties
+
+    public Button SettingsButton { get; private set; }
 
     public IRibbonManager RibbonManager { get; } = new RibbonManager();
 
@@ -43,31 +42,34 @@ public class UiManager : BaseViewModel, IUiManager
 
     #region Constructor
 
-    public UiManager(AriadnaApp ariadnaApp, ISettingsManager settingsManager,
-        IReadOnlyList<IFeature> features, IInterfaceHelper interfaceHelper,
-        IReadOnlyList<ISettings> settings,
+    public UiManager(AriadnaApp ariadnaApp, 
+        ISettingsManager settingsManager,
+        IInterfaceHelper interfaceHelper,
         ILogger logger,
         IStorage storage)
     {
         _ariadnaApp = ariadnaApp;
-        _features = features;
+
         _interfaceHelper = interfaceHelper;
-        _settings = settings;
+
         _logger = logger;
         _storage = storage;
         SettingsManager = settingsManager;
-
-        JsonInterface = InitJsonScheme();
     }
 
     #endregion
 
     #region Public Methods
 
-    public void Init()
+    public void Init(IReadOnlyList<IFeature> features, IReadOnlyList<ISettings> settings)
     {
-        QuickActionsManager.IsShowChanged += QuickActionsManager_IsShowChanged;
+        _features = features;
+        _settings = settings;
 
+        JsonInterface = InitJsonScheme();
+
+
+        QuickActionsManager.IsShowChanged += QuickActionsManager_IsShowChanged;
         RibbonManager.Loaded += (s, e) => InitialItems();
     }
 
@@ -252,7 +254,7 @@ public class UiManager : BaseViewModel, IUiManager
                 keyBindings.Add(kb);
         }
 
-        foreach (var keyBinding in keyBindings) 
+        foreach (var keyBinding in keyBindings)
             KeyBindings.Add(keyBinding);
     }
 
@@ -305,7 +307,7 @@ public class UiManager : BaseViewModel, IUiManager
 
         button.AddBehavior(new InterfaceFeatureBehavior(commandFeature));
 
-        _ariadnaApp.SettingsButton = button;
+        SettingsButton = button;
     }
 
     #endregion

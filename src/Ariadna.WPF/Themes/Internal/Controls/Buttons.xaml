@@ -2,32 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     
                     xmlns:sdk="clr-namespace:Ariadna">
-
-    <DrawingBrush x:Key="CheckerBoard"
-                  TileMode="Tile"
-                  Viewport="0 0 10 10"
-                  ViewportUnits="Absolute">
-
-        <DrawingBrush.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="White">
-                    <GeometryDrawing.Geometry>
-                        <RectangleGeometry Rect="0,0,100,100" />
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-
-                <GeometryDrawing Brush="#d7d7d7">
-                    <GeometryDrawing.Geometry>
-                        <GeometryGroup>
-                            <RectangleGeometry Rect="0,0,50,50" />
-                            <RectangleGeometry Rect="50,50,50,50" />
-                        </GeometryGroup>
-                    </GeometryDrawing.Geometry>
-                </GeometryDrawing>
-            </DrawingGroup>
-        </DrawingBrush.Drawing>
-    </DrawingBrush>
-
+   
     <Style x:Key="{x:Static sdk:AriadnaResourceKeys.FlatButton}"
            TargetType="{x:Type Button}">
         <Setter Property="Background" Value="Transparent" />

@@ -12,8 +12,8 @@
 
         <ResourceDictionary Source="pack://application:,,,/Egorozh.ColorPicker.WPF.Dialog.MahApps;component/Themes/Generic.xaml" />
 
-        <ResourceDictionary Source="pack://application:,,,/Ariadna;component/Themes/Internal/Icons.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Ariadna;component/Themes/Internal/Controls.xaml" />
+        <ResourceDictionary Source="Internal/Icons.xaml" />
+        <ResourceDictionary Source="Internal/Controls.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 

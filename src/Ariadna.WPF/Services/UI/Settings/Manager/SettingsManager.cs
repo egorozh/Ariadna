@@ -11,9 +11,9 @@ internal class SettingsManager : ISettingsManager
 
     #region Constructor
 
-    public SettingsManager(SettingsDialogViewModel settingsViewModel)
+    public SettingsManager()
     {
-        _settingsViewModel = settingsViewModel;
+        _settingsViewModel = new SettingsDialogViewModel(this);
     }
 
     #endregion
@@ -22,7 +22,7 @@ internal class SettingsManager : ISettingsManager
 
     public void Show()
     {
-        if (_settingsDialog != null && _settingsDialog.IsVisible)
+        if (_settingsDialog is {IsVisible: true})
             _settingsDialog.Close();
 
         _settingsDialog = new SettingsDialog()

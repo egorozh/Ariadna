@@ -15,7 +15,7 @@ public interface IUiManager
 
     #endregion
 
-    void InitialItems();
+    void InitialItems();    
 
     void SetNewRibbonItems(List<UiTabRibbon> tabs);
 
@@ -28,5 +28,5 @@ public interface IUiManager
     ContextMenu GetContextMenu(List<UiMenuItem> items);
     void DeactivateContextMenu(ContextMenu contextMenu);
 
-    void Init();
+    void Init(IReadOnlyList<IFeature> features, IReadOnlyList<ISettings> settings);
 }

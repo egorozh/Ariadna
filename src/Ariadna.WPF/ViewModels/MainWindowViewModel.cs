@@ -3,7 +3,7 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace Ariadna;
 
-internal class MainWindowViewModel : BaseViewModel
+internal class MainWindowViewModel : BaseViewModel, IDialogService
 {
     #region Public Properties
 
@@ -26,14 +26,14 @@ internal class MainWindowViewModel : BaseViewModel
     #endregion
 
     #region Public Methods
-    
-    public bool Close() => AriadnaApp.Close();
+
+    public bool Close() => AriadnaApp.OnClosing();
 
     public void Closed() => AriadnaApp.ClosedApp();
 
     public async Task<MessageDialogResult> ShowMessageBoxAsync(string title, string message,
-        MessageDialogStyle style, object? context)
-    {   
+        MessageDialogStyle style = MessageDialogStyle.Affirmative, object? context = null)
+    {
         MetroDialogSettings settings = new()
         {
             NegativeButtonText = "Отмена"
@@ -48,8 +48,14 @@ internal class MainWindowViewModel : BaseViewModel
         var showDialogResult = await DialogCoordinator.Instance.ShowMessageAsync(context ?? this, title, message,
             style, settings);
 
-        return  showDialogResult;
+        return showDialogResult;
     }
 
     #endregion
+}
+
+public interface IDialogService
+{
+    Task<MessageDialogResult> ShowMessageBoxAsync(string title, string message,
+        MessageDialogStyle style = MessageDialogStyle.Affirmative, object? context = null);
 }

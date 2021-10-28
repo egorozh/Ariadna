@@ -112,12 +112,15 @@ internal sealed class CommandItemViewModel : BaseViewModel
 
             var filePath = Path.Combine(iconDirectory, _overridedIconPath);
 
-            var source = _imageHelpers.CreateImageSource(filePath);
-
-            OverrideIcon = new Image()
+            if (File.Exists(filePath))
             {
-                Source = source
-            };
+                var source = _imageHelpers.CreateImageSource(filePath);
+
+                OverrideIcon = new Image()
+                {
+                    Source = source
+                };
+            }
         }
         else
         {

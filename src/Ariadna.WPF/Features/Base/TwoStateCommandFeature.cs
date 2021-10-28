@@ -41,11 +41,11 @@ public abstract class TwoStateCommandFeature : CommandFeature, ITwoStateCommandF
     
     #region Public Methods
 
-    public FrameworkElement? CreateAlternativeIcon() => null;
+    public virtual FrameworkElement? CreateAlternativeIcon() => null;
 
-    public DefaultMenuProperties GetAlternativeMenuProperties() => new();
+    public virtual DefaultMenuProperties GetAlternativeMenuProperties() => new();
 
-    public DefaultRibbonProperties GetAlternativeRibbonProperties() => new();
+    public virtual DefaultRibbonProperties GetAlternativeRibbonProperties() => new();
 
     #endregion
 }

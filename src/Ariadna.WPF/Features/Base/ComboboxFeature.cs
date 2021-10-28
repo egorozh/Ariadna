@@ -44,6 +44,7 @@ public abstract class ComboboxFeature<T> : InterfaceFeature, IComboboxFeature<T>
         {
             _currentItem = value;
             CurrentChanged?.Invoke(this, EventArgs.Empty);
+            OnCurrentChanged();
         }
     }
 
@@ -65,6 +66,8 @@ public abstract class ComboboxFeature<T> : InterfaceFeature, IComboboxFeature<T>
         factory.SetBinding(TextBlock.TextProperty,
             new Binding(nameof(IComboBoxItem.Header)));
 
+        factory.SetValue(TextBlock.FontSizeProperty, 12.0);
+
         return new DataTemplate(typeof(T))
         {
             VisualTree = factory
@@ -72,4 +75,8 @@ public abstract class ComboboxFeature<T> : InterfaceFeature, IComboboxFeature<T>
     }
 
     #endregion
+
+    protected virtual void OnCurrentChanged()
+    {
+    }
 }

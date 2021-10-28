@@ -22,4 +22,6 @@ public interface IMultiProjectApp
     event EventHandler<NotifyCollectionChangedEventArgs> ProjectsChanged;
 
     DataTemplate? GetDocumentHeaderTemplate();
+
+    void Init(global::System.Collections.IEnumerable tools);
 }

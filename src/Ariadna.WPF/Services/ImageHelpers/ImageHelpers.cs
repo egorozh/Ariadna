@@ -5,7 +5,7 @@ using System.Windows.Media.Imaging;
 
 namespace Ariadna;
 
-public class ImageHelpers : IImageHelpers
+internal class ImageHelpers : IImageHelpers
 {
     private readonly ISvgHelper _svgHelper;
 

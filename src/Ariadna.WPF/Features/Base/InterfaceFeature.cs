@@ -4,7 +4,7 @@ public abstract class InterfaceFeature : Feature, IInterfaceFeature
 {
     #region Private Fields
 
-    private bool _isShow;
+    private bool _isShow = true;
 
     #endregion
 

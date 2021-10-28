@@ -13,4 +13,6 @@ public interface IStorage
     string IconsDirectory { get;}
 
     string InterfaceConfigPath { get; }
+
+    string LogPath { get; }
 }
