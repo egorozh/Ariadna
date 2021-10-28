@@ -11,5 +11,5 @@ internal interface IRibbonTabItem
     void AddRibbonItem(Control control, string boxName);
     void Block();
     void UnBlock();
-    bool Contains(IFeature akimFeature);
+    bool Contains(IFeature feature);
 }

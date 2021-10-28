@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:akim="clr-namespace:Ariadna.QuickActionsBar"
+             xmlns:local="clr-namespace:Ariadna.QuickActionsBar"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Style>
-        <Style TargetType="{x:Type akim:ToolBarLayout}">
+        <Style TargetType="{x:Type local:ToolBarLayout}">
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type akim:ToolBarLayout}">
+                    <ControlTemplate TargetType="{x:Type local:ToolBarLayout}">
                         <Grid >
 
                             <Grid.RowDefinitions>
@@ -25,26 +25,26 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <akim:QuickActionsBar Grid.Row="0" Grid.Column="0"
+                            <local:QuickActionsBar Grid.Row="0" Grid.Column="0"
                                                              Grid.ColumnSpan="3"
 
                                                              ContextMenu="{TemplateBinding QuickActionsContextMenu}"
                                                              Orientation="Horizontal"
-                                                             Visibility="{TemplateBinding IsShowTop, Converter={akim:BoolToVisibilityConverter}}"
+                                                             Visibility="{TemplateBinding IsShowTop, Converter={local:BoolToVisibilityConverter}}"
                                                              Groups="{TemplateBinding TopToolBar}" />
 
-                            <akim:QuickActionsBar Grid.Row="1" Grid.Column="0"
+                            <local:QuickActionsBar Grid.Row="1" Grid.Column="0"
                                                              ContextMenu="{TemplateBinding QuickActionsContextMenu}"
                                                              Orientation="Vertical"
-                                                             Visibility="{TemplateBinding IsShowLeft, Converter={akim:BoolToVisibilityConverter}}"
+                                                             Visibility="{TemplateBinding IsShowLeft, Converter={local:BoolToVisibilityConverter}}"
                                                              Groups="{TemplateBinding LeftToolBar}" />
 
                             <ContentPresenter Grid.Row="1" Grid.Column="1" />
 
-                            <akim:QuickActionsBar Grid.Row="1" Grid.Column="2"
+                            <local:QuickActionsBar Grid.Row="1" Grid.Column="2"
                                                              ContextMenu="{TemplateBinding QuickActionsContextMenu}"
                                                              Orientation="Vertical"
-                                                             Visibility="{TemplateBinding IsShowRight, Converter={akim:BoolToVisibilityConverter}}"
+                                                             Visibility="{TemplateBinding IsShowRight, Converter={local:BoolToVisibilityConverter}}"
                                                              Groups="{TemplateBinding RightToolBar}" />
 
                         </Grid>

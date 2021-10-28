@@ -15,8 +15,8 @@ internal class QuickButtonViewModel : QuickItemViewModel
 
     #region Constructor
 
-    public QuickButtonViewModel(UiQuickActionItem quickActionItem, IFeature akimFeature) : base(quickActionItem,
-        akimFeature)
+    public QuickButtonViewModel(UiQuickActionItem quickActionItem, IFeature feature) : base(quickActionItem,
+        feature)
     {
         if (Feature is ICommandFeature commandFeature)
         {
@@ -40,13 +40,13 @@ internal class QuickItemViewModel : BaseViewModel
 
     public string FeatureName => Feature?.ToString();
 
-    public QuickItemViewModel(UiQuickActionItem quickActionItem, IFeature akimFeature)
+    public QuickItemViewModel(UiQuickActionItem quickActionItem, IFeature feature)
     {
         Header = quickActionItem.Header;
         Description = quickActionItem.Description;
         DisableReason = quickActionItem.DisableReason;
 
-        Feature = akimFeature;
+        Feature = feature;
     }
 
     public static QuickItemViewModel CreateItem(UiQuickActionItem ribbonItem, IFeature feature)
@@ -65,8 +65,8 @@ internal class QuickItemViewModel : BaseViewModel
 
 internal class QuickComboBoxViewModel : QuickItemViewModel
 {
-    public QuickComboBoxViewModel(UiQuickActionItem quickActionItem, IFeature akimFeature) : base(
-        quickActionItem, akimFeature)
+    public QuickComboBoxViewModel(UiQuickActionItem quickActionItem, IFeature feature) : base(
+        quickActionItem, feature)
     {
     }
 }

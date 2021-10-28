@@ -84,13 +84,13 @@ public class RibbonTabItem : Fluent.RibbonTabItem, IRibbonTabItem
             button.IsEnabled = true;
     }
 
-    public bool Contains(IFeature akimFeature)
+    public bool Contains(IFeature feature)
     {
         foreach (var button in _items)
         {
             var commandFeature = button.GetBehavior<InterfaceFeatureBehavior>()?.Feature;
 
-            if (commandFeature == akimFeature)
+            if (commandFeature == feature)
                 return true;
         }
 

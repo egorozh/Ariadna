@@ -13,10 +13,10 @@ internal class ShowRibbonFeature : ToggleCommandFeature
         _uiManager = uiManager;
         IsPressed = magicOptions.IsShowRibbon;
 
-        ariadnaApp.Started += AkimApp_Started;
+        ariadnaApp.Started += AriadnaApp_Started;
     }
 
-    private void AkimApp_Started(object? sender, EventArgs e)
+    private void AriadnaApp_Started(object? sender, EventArgs e)
     {
         _uiManager.RibbonManager.Visible = IsPressed;
     }

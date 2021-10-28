@@ -18,10 +18,10 @@ public class QuickActionsBar : WrapPanel
 
     private static void GroupsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (d is QuickActionsBar akimToolBarGroup &&
+        if (d is QuickActionsBar actionsBar &&
             e.NewValue is ObservableCollection<ObservableCollection<Control>> groups)
         {
-            akimToolBarGroup.GroupsChanged(groups);
+            actionsBar.GroupsChanged(groups);
         }
     }
 
@@ -60,7 +60,7 @@ public class QuickActionsBar : WrapPanel
 
             foreach (var group in groups)
             {
-                var toolBarGroup = new AkimToolBarGroup
+                var toolBarGroup = new ToolBarGroup
                 {
                     Buttons = @group
                 };
@@ -78,7 +78,7 @@ public class QuickActionsBar : WrapPanel
         if (e.Action == NotifyCollectionChangedAction.Add)
         {
             var addedGroup = (ObservableCollection<Control>) e.NewItems[0];
-            var toolBarGroup = new AkimToolBarGroup
+            var toolBarGroup = new ToolBarGroup
             {
                 Buttons = addedGroup
             };
@@ -95,10 +95,10 @@ public class QuickActionsBar : WrapPanel
 
             foreach (UIElement child in Children)
             {
-                if (child is AkimToolBarGroup akimToolBar)
+                if (child is ToolBarGroup toolBar)
                 {
-                    if (akimToolBar.Buttons == removed)
-                        removedToolBarGroup = akimToolBar;
+                    if (toolBar.Buttons == removed)
+                        removedToolBarGroup = toolBar;
                 }
             }
 

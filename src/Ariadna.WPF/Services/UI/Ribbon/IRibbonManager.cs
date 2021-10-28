@@ -25,5 +25,5 @@ public interface IRibbonManager
     void InitElements(List<UiTabRibbon> tabs, List<UiIcon> icons, List<UiKeyBinding> jsonConfigHotKeys,
         List<UiHelpVideo> helpVideos, IReadOnlyList<IFeature> features, IInterfaceHelper interfaceHelper);
 
-    string GetTabName(IFeature akimFeature);
+    string GetTabName(IFeature feature);
 }

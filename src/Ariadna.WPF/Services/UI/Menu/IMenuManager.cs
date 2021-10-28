@@ -18,5 +18,5 @@ public interface IMenuManager
 
     void InitElements(List<UiMenuItem> uiMenuItems, List<UiIcon> uiFullIcons,
         List<UiKeyBinding> jsonConfigHotKeys,
-        IReadOnlyList<IFeature> akimFeatures, IInterfaceHelper interfaceHelper);
+        IReadOnlyList<IFeature> features, IInterfaceHelper interfaceHelper);
 }

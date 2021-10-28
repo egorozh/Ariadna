@@ -7,7 +7,7 @@ namespace Ariadna;
 internal static class MenuItemFactory
 {
     public static void AddChildrenItems(ItemsControl parent,
-        List<UiMenuItem> children, List<UiIcon> icons, IReadOnlyList<IFeature> akimFeatures,
+        List<UiMenuItem> children, List<UiIcon> icons, IReadOnlyList<IFeature> features,
         List<UiKeyBinding> hotKeys, IInterfaceHelper interfaceHelper)
     {
         var itemsSource = parent.ItemsSource as ObservableCollection<Control>;
@@ -16,7 +16,7 @@ internal static class MenuItemFactory
         {
             if (uiMenuItem.Id != null)
             {
-                var feature = akimFeatures.FirstOrDefault(f => f.Id == uiMenuItem.Id);
+                var feature = features.FirstOrDefault(f => f.Id == uiMenuItem.Id);
 
                 if (feature == null)
                     continue;
@@ -52,7 +52,7 @@ internal static class MenuItemFactory
                 menuItem.AddBehavior(new HiddenMenuItemBehavior());
 
                 AddChildrenItems(menuItem, uiMenuItem.Children, icons,
-                    akimFeatures, hotKeys, interfaceHelper);
+                    features, hotKeys, interfaceHelper);
 
                 itemsSource.Add(menuItem);
             }

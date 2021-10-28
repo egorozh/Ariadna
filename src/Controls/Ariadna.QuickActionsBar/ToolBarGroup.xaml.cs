@@ -5,21 +5,21 @@ using System.Windows.Controls;
 
 namespace Ariadna.QuickActionsBar;
 
-public partial class AkimToolBarGroup
+public partial class ToolBarGroup
 {
     #region Dependency Properties
 
     public static readonly DependencyProperty ButtonsProperty = DependencyProperty.Register(
-        nameof(Buttons), typeof(ObservableCollection<Control>), typeof(AkimToolBarGroup),
+        nameof(Buttons), typeof(ObservableCollection<Control>), typeof(ToolBarGroup),
         new PropertyMetadata(default(ObservableCollection<Control>), ButtonsChanged));
 
     private ObservableCollection<Control> _prevButtons;
 
     private static void ButtonsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (d is AkimToolBarGroup akimToolBarGroup && e.NewValue is ObservableCollection<Control> buttons)
+        if (d is ToolBarGroup barGroup && e.NewValue is ObservableCollection<Control> buttons)
         {
-            akimToolBarGroup.ButtonsChanged(buttons);
+            barGroup.ButtonsChanged(buttons);
         }
     }
 
@@ -42,7 +42,7 @@ public partial class AkimToolBarGroup
 
     #region Constructor
 
-    public AkimToolBarGroup()
+    public ToolBarGroup()
     {
         InitializeComponent();
     }

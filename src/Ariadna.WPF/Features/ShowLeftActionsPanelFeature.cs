@@ -7,10 +7,10 @@ internal class ShowLeftActionsPanelFeature : ToggleCommandFeature
     public ShowLeftActionsPanelFeature(AriadnaApp ariadnaApp, IUiManager uiManager) : base(ariadnaApp)
     {
         _uiManager = uiManager;
-        AriadnaApp.Started += AkimApp_Started;
+        AriadnaApp.Started += AriadnaAppStarted;
     }
 
-    private void AkimApp_Started(object? sender, EventArgs e)
+    private void AriadnaAppStarted(object? sender, EventArgs e)
     {
         IsPressed = _uiManager.JsonInterface?.QuickActions.IsShowLeft ?? false;
     }

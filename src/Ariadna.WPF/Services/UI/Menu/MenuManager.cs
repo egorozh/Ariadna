@@ -15,7 +15,7 @@ public class MenuManager : BaseViewModel, IMenuManager
     #region Public Methods
 
     public void InitElements(List<UiMenuItem>? uiMenuItems, List<UiIcon> uiFullIcons,
-        List<UiKeyBinding> hotKeys, IReadOnlyList<IFeature> akimFeatures,
+        List<UiKeyBinding> hotKeys, IReadOnlyList<IFeature> features,
         IInterfaceHelper interfaceHelper)
     {
         if (uiMenuItems != null)
@@ -34,7 +34,7 @@ public class MenuManager : BaseViewModel, IMenuManager
                 rootMenuItem.AddBehavior(new HiddenMenuItemBehavior());
 
                 MenuItemFactory.AddChildrenItems(rootMenuItem, item.Children,
-                    uiFullIcons, akimFeatures, hotKeys, interfaceHelper);
+                    uiFullIcons, features, hotKeys, interfaceHelper);
 
                 MenuItems.Add(rootMenuItem);
             }

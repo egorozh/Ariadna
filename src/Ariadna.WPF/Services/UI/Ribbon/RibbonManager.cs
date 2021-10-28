@@ -44,13 +44,13 @@ public class RibbonManager : BaseViewModel, IRibbonManager
         SelectedTabIndex = index;
     }
 
-    public string GetTabName(IFeature akimFeature)
+    public string GetTabName(IFeature feature)
     {
         foreach (var ribbonTabItem in _tabs)
         {
             if (ribbonTabItem is IRibbonTabItem tab)
             {
-                if (tab.Contains(akimFeature))
+                if (tab.Contains(feature))
                     return tab.Header as string;
             }
         }
