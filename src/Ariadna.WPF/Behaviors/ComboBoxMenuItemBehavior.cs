@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Ariadna;
 
@@ -175,6 +174,7 @@ public class ComboBoxMenuItemBehavior : Behavior<ItemsControl>
     {
         var menuItem = new MenuItem
         {
+            Header = itemVm,
             DataContext = itemVm,
             IsCheckable = true,
             IsChecked = _comboboxFeature.CurrentItem == itemVm,

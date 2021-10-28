@@ -13,7 +13,6 @@ public class UiManager : BaseViewModel, IUiManager
 {
     #region Private Fields
 
-    private readonly AriadnaApp _ariadnaApp;
     private IReadOnlyList<IFeature> _features;
     private readonly IInterfaceHelper _interfaceHelper;
     private IReadOnlyList<ISettings> _settings;
@@ -23,8 +22,8 @@ public class UiManager : BaseViewModel, IUiManager
     #endregion
 
     #region Public Properties
-
-    public Button SettingsButton { get; private set; }
+        
+    public Button? SettingsButton { get; private set; }
 
     public IRibbonManager RibbonManager { get; } = new RibbonManager();
 
@@ -42,14 +41,11 @@ public class UiManager : BaseViewModel, IUiManager
 
     #region Constructor
 
-    public UiManager(AriadnaApp ariadnaApp, 
-        ISettingsManager settingsManager,
+    public UiManager(ISettingsManager settingsManager,
         IInterfaceHelper interfaceHelper,
         ILogger logger,
         IStorage storage)
     {
-        _ariadnaApp = ariadnaApp;
-
         _interfaceHelper = interfaceHelper;
 
         _logger = logger;
@@ -92,7 +88,7 @@ public class UiManager : BaseViewModel, IUiManager
 
         RibbonManager.SelectTabItem();
 
-        CreateSettingsButton(JsonInterface);
+        SettingsButton = CreateSettingsButton(JsonInterface);
     }
 
     public void SetNewRibbonItems(List<UiTabRibbon> tabs)
@@ -258,13 +254,13 @@ public class UiManager : BaseViewModel, IUiManager
             KeyBindings.Add(keyBinding);
     }
 
-    private void CreateSettingsButton(JsonInterface jsonScheme)
+    private Button? CreateSettingsButton(JsonInterface jsonScheme)
     {
         var settingsFeature =
             _features.FirstOrDefault(f => f.Id == "267d8733-06d9-4c5a-b438-b44a5c63f7a1");
 
         if (settingsFeature is not ICommandFeature commandFeature)
-            return;
+            return null;
 
         var button = new Button
         {
@@ -307,7 +303,7 @@ public class UiManager : BaseViewModel, IUiManager
 
         button.AddBehavior(new InterfaceFeatureBehavior(commandFeature));
 
-        SettingsButton = button;
+        return button;
     }
 
     #endregion

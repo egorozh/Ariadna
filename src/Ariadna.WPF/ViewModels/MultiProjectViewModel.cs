@@ -59,7 +59,7 @@ internal class MultiProjectViewModel : BaseViewModel
 
     #region Private Methods
 
-    private static void Serializer_LayoutSerializationCallback(object sender,
+    private static void Serializer_LayoutSerializationCallback(object? sender,
         LayoutSerializationCallbackEventArgs e)
     {
         e.Content = e.Content;

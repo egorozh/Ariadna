@@ -80,7 +80,7 @@ public class AriadnaApp : BaseViewModel
 
         var vm = Host.Resolve<MultiProjectViewModel>();
 
-        AppView = new MultiProjectView(vm, this);
+        AppView = new MultiProjectView(vm);
         
         Host.Resolve<IUiManager>().Init(Host.Resolve<IReadOnlyList<IFeature>>(), Host.Resolve<IReadOnlyList<ISettings>>());
         
@@ -246,7 +246,7 @@ public class AriadnaApp : BaseViewModel
         }
         catch (Exception e)
         {
-            _host.Resolve<ILogger>()
+            Host.Resolve<ILogger>()
                 .Error(e, $"Словарь ресурсов, определенный в {uri} не существует");
         }
 #endif
