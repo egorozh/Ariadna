@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows</TargetFrameworks>
-		<UseWPF>true</UseWPF>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Ariadna</RootNamespace>
+		<UseWPF>true</UseWPF>
+		<Description>WPF UI Framework</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
