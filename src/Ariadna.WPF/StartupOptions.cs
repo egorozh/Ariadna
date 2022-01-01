@@ -42,6 +42,12 @@ public class StartupOptions
             .SingleInstance();
     }
 
+    public void AddApp<T, TAs1>() where T : IMultiProjectApp
+    {
+        _builder.RegisterType<T>().As<TAs1>().As<IMultiProjectApp>()
+            .SingleInstance();
+    }
+
     #endregion
 
     public void AddPlugin<T>() where T : IPlugin
