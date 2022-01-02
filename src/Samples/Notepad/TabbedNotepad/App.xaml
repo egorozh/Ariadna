@@ -9,12 +9,12 @@
                 <ResourceDictionary Source="pack://application:,,,/Ariadna.WPF;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate x:Key="AkimDocumentHeaderTemplate">
+            <DataTemplate x:Key="DocumentHeaderTemplate">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding Title}"/>
 
                     <TextBlock Text="*"
-                               Visibility="{Binding Content.Project.AkimDocument.HaveChanges, Converter={ariadna:BoolToVisibilityConverter}}"
+                               Visibility="{Binding Content.HaveChanges, Converter={ariadna:BoolToVisibilityConverter}}"
                                VerticalAlignment="Center"
                                Margin="2 0 0 0"
                                TextAlignment="Center" />

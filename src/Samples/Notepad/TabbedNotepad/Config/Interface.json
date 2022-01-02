@@ -1,3 +1,46 @@
 {
- 
+  "Menu": [
+    {
+      "Header": "File",
+      "Children": [
+        {
+          "Header": "Open file",
+          "Children": [],
+          "Id": "031965a0-cbc8-4b6e-a342-4938b1fc4469"
+        }
+      ]
+    }
+  ],
+  "Ribbon": [
+    {
+      "Header": "Main",
+      "Boxes": [
+        {
+          "Header": "Main",
+          "Items": [
+            {
+              "Size": 0,
+              "Header": "Open",
+              "Id": "031965a0-cbc8-4b6e-a342-4938b1fc4469",
+              "Description": "No description set",
+              "DisableReason": "The reason for the inactivity of the command is not specified"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "QuickActions": {
+    "IsShowLeft": false,
+    "IsShowTop": false,
+    "IsShowRight": false,
+    "Size": 0,
+    "Left": [],
+    "Top": [],
+    "Right": []
+  },
+  "Settings": [],
+  "Icons": [],
+  "HelpVideos": [],
+  "HotKeys": []
 }

@@ -2,6 +2,6 @@
 
 namespace TabbedNotepad;
 
-public interface INotepadApp : IMultiProjectApp<IDocumentModel, IToolViewModel>
+public interface INotepadApp : IMultiProjectApp<IDocumentViewModel, IToolViewModel>
 {
 }

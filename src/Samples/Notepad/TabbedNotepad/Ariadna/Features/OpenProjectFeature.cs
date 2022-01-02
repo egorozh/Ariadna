@@ -2,49 +2,53 @@
 using Ariadna;
 using Microsoft.Win32;
 
-namespace TabbedNotepad
+namespace TabbedNotepad;
+
+internal class OpenProjectFeature : CommandFeature
 {
-    internal class OpenProjectFeature : CommandFeature
+    private readonly INotepadApp _app;
+
+    public OpenProjectFeature(AriadnaApp ariadnaApp, INotepadApp app) : base(ariadnaApp)
     {
-        public OpenProjectFeature(AriadnaApp ariadnaApp) : base(ariadnaApp)
-        {
-        }
+        _app = app;
+    }
 
-        public override DefaultMenuProperties GetDefaultMenuProperties() => new()
+    public override DefaultMenuProperties GetDefaultMenuProperties() => new()
+    {
+        Header = "Open file"
+    };
+
+    public override DefaultRibbonProperties GetDefaultRibbonProperties() => new()
+    {
+        Header = "Open"
+    };
+
+    public override KeyBinding GetDefaultKeyBinding() => new(this, Key.O, ModifierKeys.Control | ModifierKeys.Shift);
+
+    protected override string CreateId() => "031965a0-cbc8-4b6e-a342-4938b1fc4469";
+
+    protected override void Execute()
+    {
+        var openFileDialog = new OpenFileDialog
         {
-            Header = "Open file"
+            Title = "Открыть проект",
+            Filter = "Text documents |*.*"
         };
 
-        public override DefaultRibbonProperties GetDefaultRibbonProperties() => new()
-        {
-            Header = "Open"
-        };
+        var res = openFileDialog.ShowDialog();
 
+        if (res == false) return;
 
-        public override KeyBinding GetDefaultKeyBinding() => new(this, Key.O, ModifierKeys.Control | ModifierKeys.Shift);
+        var docPath = openFileDialog.FileName;
 
-        protected override string CreateId() => "031965a0-cbc8-4b6e-a342-4938b1fc4469";
+        Open(docPath);  
+    }
 
-        protected override void Execute()
-        {
-            var openFileDialog = new OpenFileDialog
-            {
-                Title = "Открыть проект",
-                Filter = "Text documents |*.*"
-            };
+    private void Open(string docPath)
+    {
+        var doc = new DocumentModel(docPath);
 
-            var res = openFileDialog.ShowDialog();
-
-            if (res == false) return;
-
-            var projectPath = openFileDialog.FileName;
-
-            Open(projectPath);
-        }
-
-        private void Open(string projectPath)
-        {
-            
-        }
+        _app.Projects.Add(doc);
+        _app.CurrentProject = doc;
     }
 }
